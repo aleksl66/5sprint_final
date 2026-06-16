@@ -12,8 +12,7 @@ type DataParser interface {
 
 func Info(dataset []string, dp DataParser) {
 	for _, data := range dataset {
-		err := dp.Parse(data)
-		if err != nil {
+		if err := dp.Parse(data); err != nil {
 			log.Println("ошибка разбора данных:", err)
 			continue
 		}

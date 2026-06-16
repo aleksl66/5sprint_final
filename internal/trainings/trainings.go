@@ -27,7 +27,6 @@ func (t *Training) Parse(datastring string) error {
 	if err != nil {
 		return fmt.Errorf("ошибка преобразования количества шагов: %w", err)
 	}
-	// Добавили проверку на положительность шагов
 	if steps <= 0 {
 		return fmt.Errorf("количество шагов должно быть положительным, получено %d", steps)
 	}
@@ -39,7 +38,6 @@ func (t *Training) Parse(datastring string) error {
 	if err != nil {
 		return fmt.Errorf("ошибка преобразования длительности: %w", err)
 	}
-	// Добавили проверку на положительность длительности
 	if duration <= 0 {
 		return fmt.Errorf("продолжительность должна быть положительной")
 	}
@@ -68,7 +66,6 @@ func (t Training) ActionInfo() (string, error) {
 		return "", fmt.Errorf("ошибка расчёта калорий: %w", err)
 	}
 
-	// Добавили \n в конце строки
 	return fmt.Sprintf(
 		"Тип тренировки: %s\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий: %.2f\n",
 		t.TrainingType,

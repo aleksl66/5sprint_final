@@ -22,7 +22,7 @@ func (ds *DaySteps) Parse(datastring string) error {
 		return fmt.Errorf("некорректный формат данных: ожидается 2 элемента, получено %d", len(parts))
 	}
 
-	// Убрали TrimSpace, чтобы пробелы вызывали ошибку
+	// TrimSpace не используется, чтобы пробелы вызывали ошибку
 	steps, err := strconv.Atoi(parts[0])
 	if err != nil {
 		return fmt.Errorf("ошибка преобразования количества шагов: %w", err)
@@ -58,7 +58,6 @@ func (ds DaySteps) ActionInfo() (string, error) {
 		return "", fmt.Errorf("ошибка расчёта калорий: %w", err)
 	}
 
-	// Добавили \n в конце, как ожидают тесты
 	return fmt.Sprintf(
 		"Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
 		ds.Steps,
